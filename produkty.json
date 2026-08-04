@@ -5,6 +5,10 @@
     },
     "ryba": {
         "ilosc": 12,
-        "cena": 14
+        "cena": 40.0
+    },
+    "wyciag z plemnika": {
+        "ilosc": 1,
+        "cena": 100000.0
     }
 }

@@ -1,0 +1,19 @@
+{
+    "pracownicy": [
+        {
+            "imie": "Marcel",
+            "rola": "Administrator",
+            "haslo": "aaaa"
+        },
+        {
+            "imie": "Anna",
+            "rola": "Manager",
+            "haslo": "Ania2026#mag"
+        },
+        {
+            "imie": "Piotr",
+            "rola": "Magazynier",
+            "haslo": "Piotrek_321"
+        }
+    ]
+}
