@@ -1,3 +1,5 @@
+import json
+
 def ShowMenu():
     print("1. Dodaj produkt")
     print("2. Wyświetl produkty")
@@ -13,7 +15,8 @@ def AddItem(produkty):
     produkty[nazwaProduktu]={
         "ilosc":iloscProduktu,
         "cena":cenaProduktu
-        }      
+        }    
+    WriteJson()  
 def ShowItem(produkty):
     for nazwa,dane in produkty.items():
         print("--------------------")
@@ -25,10 +28,17 @@ def DeleteItem(produkty):
     
     if ItemToDelete in produkty:
         del produkty[ItemToDelete]
+    else:
+            print("Nie ma produktu w bazie")         
+    WriteJson()  
 def ChangePrice(produkty):
     ItemToChange=input("Którego produktu chcesz zmienić cenę? ")
-    price=int(input("Podaj nową cenę"))
-    produkty[ItemToChange]["cena"]=price
+    if ItemToChange in produkty
+        price=int(input("Podaj nową cenę"))
+        produkty[ItemToChange]["cena"]=price
+    else:
+            print("Nie ma produktu w bazie")  
+    WriteJson()  
 def OverrallPrice(produkty):
     suma = 0
     for nazwa, dane in produkty.items():
@@ -40,20 +50,21 @@ def SearchItem(produkty):
         print(f"Produkt: {item} ")
         print(f"Cena: {produkty[item]["cena"]} ")
         print(f"Ilość: {produkty[item]["ilosc"]} ")  
-    
-    
+    else:
+        print("Nie ma produktu w bazie")
+def WriteJson(produkty):
+    with open("dane.json","w") as plik:
+        json.dump(produkty,plik,indent=4)
+def ReadJson():
+    try:
+        with open("dane.json","r",encoding="utf-8") as plik:  
+            return json.load(plik)
+    except FileNotFoundError:
+        return "Nie znaleziono pliku"
     
 def Magazyn():
-    produkty={
-        "mleko":{
-            "ilosc":15,
-            "cena":10,
-        },
-        "chleb":{
-            "ilosc":2,
-            "cena":7,
-        }
-    }
+    produkty=ReadJson()
+   
     choice=0
 
     while choice!=7:
@@ -72,6 +83,7 @@ def Magazyn():
             OverrallPrice(produkty)
         elif choice==6:
             SearchItem(produkty)
-
+            
+    WriteJson(produkty)
     print("Dzięki za wizytę w magazynie")
 Magazyn()
